@@ -1,0 +1,314 @@
+# Author: Vladimir Ozura
+# Email: vladimir.ozura@diverto.hr
+# Last Update: 2017-09-21
+###################### Filebeat Configuration Example #########################
+
+# This file is an example configuration file highlighting only the most common
+# options. The filebeat.full.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/filebeat/index.html
+
+#=========================== Filebeat prospectors =============================
+
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+#- input_type: log
+#  paths:
+#    - /nsm/bro/logs/current/dhcp.log
+#  document_type: bro
+#    type: bro_dhcp
+
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/conn.log
+  document_type: bro_conn
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/dhcp.log
+  document_type: bro_dhcp
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/dns.log
+  document_type: bro_dns
+
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/dpd.log
+  document_type: bro_dpd
+    
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/files.log
+  document_type: bro_files
+
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/ftp.log
+  document_type: bro_ftp
+
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/http*.log
+  document_type: bro_http
+
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/irc.log
+  document_type: bro_irc
+      
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/kerberos.log
+  document_type: bro_kerberos
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/notice.log
+  document_type: bro_notice
+ 
+ - input_type: log
+  paths:
+    - /nsm/bro/logs/current/rdp.log
+  document_type: bro_rdp
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/signatures.log
+  document_type: bro_signatures
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/smtp.log
+  document_type: bro_smtp
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/snmp.log
+  document_type: bro_snmp
+      
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/software.log
+  document_type: bro_software
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/ssh.log
+  document_type: bro_ssh
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/ssl.log
+  document_type: bro_ssl
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/syslog.log
+  document_type: bro_syslog
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/tunnel.log
+  document_type: bro_tunnel
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/weird.log
+  document_type: bro_weird
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/mysql.log
+  document_type: bro_mysql
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/socks.log
+  document_type: bro_socks
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/x509.log
+  document_type: bro_x509
+ 
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/intel.log
+  document_type: bro_intel
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/modbus.log
+  document_type: bro_modbus
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/sip.log
+  document_type: bro_sip
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/radius.log
+  document_type: bro_radius
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/pe.log
+  document_type: bro_pe
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/rfb.log
+  document_type: bro_rfb
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/dnp3.log
+  document_type: bro_dnp3
+  
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/smb_files.log
+  document_type: bro_smb_files
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/smb_mapping.log
+  document_type: bro_smb_mapping
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/ntlm.log
+  document_type: bro_ntlm
+   
+- input_type: log
+  paths:
+    - /nsm/bro/logs/current/dce_rpc.log
+  document_type: bro_dce_rpc
+ 
+- input_type: log
+  paths:
+    - /nsm/sensor_data/*/eve.json
+  document_type: suricata
+  json.keys_under_root: true
+  json.add_error_key: true
+  
+#- input_type: log
+#  paths:
+#    - /var/log/snort/snort.log
+#  document_type: bro_snort
+#  type: bro_snort
+
+#- input_type: log
+
+  # Change to true to enable this prospector configuration.
+  enabled: true
+
+#- input_type: log
+
+  # Paths that should be crawled and fetched. Glob based paths.
+#  paths:
+#    - /var/log/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+  # Exclude lines. A list of regular expressions to match. It drops the lines that are
+  # matching any regular expression from the list.
+  #exclude_lines: ["^DBG"]
+
+  # Include lines. A list of regular expressions to match. It exports the lines that are
+  # matching any regular expression from the list.
+  #include_lines: ["^ERR", "^WARN"]
+
+  # Exclude files. A list of regular expressions to match. Filebeat drops the files that
+  # are matching any regular expression from the list. By default, no files are dropped.
+  #exclude_files: [".gz$"]
+
+  # Optional additional fields. These field can be freely picked
+  # to add additional information to the crawled log files for filtering
+  #fields:
+  #  level: debug
+  #  review: 1
+
+  ### Multiline options
+
+  # Mutiline can be used for log messages spanning multiple lines. This is common
+  # for Java Stack Traces or C-Line Continuation
+
+  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
+  #multiline.pattern: ^\[
+
+  # Defines if the pattern set under pattern should be negated or not. Default is false.
+  #multiline.negate: false
+
+  # Match can be set to "after" or "before". It is used to define if lines should be append to a pattern
+  # that was (not) matched before or after or as long as a pattern is not matched based on negate.
+  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
+  #multiline.match: after
+
+
+#================================ General =====================================
+
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+#name:
+
+# The tags of the shipper are included in their own field with each
+# transaction published.
+#tags: ["service-X", "web-tier"]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: staging
+
+#================================ Outputs =====================================
+
+# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+
+#-------------------------- Elasticsearch output ------------------------------
+#output.elasticsearch:
+  # Array of hosts to connect to.
+#  hosts: ["localhost:9200"]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["192.168.1.106:6054"]
+#   hosts: ["10.0.18.160:6054"]
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+
+  # Client Certificate Key
+  #ssl.key: "/etc/pki/client/cert.key"
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: critical, error, warning, info, debug
+logging.level: debug
+logging.to_files: true
+logging.to_syslog: false
+logging.files.path: /var/log/mybeat
+logging.files.name: mybeat.log
+logging.files.keepfiles: 7
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use ["*"]. Examples of other selectors are "beat",
+# "publish", "service".
+#logging.selectors: ["*"]
